@@ -607,7 +607,7 @@
 	<script src="simplyCountdown.js"></script>
 	<!-- Main -->
 	<script src="main.js"></script>
-
+<!--
 	<script>
     var d = new Date("2024-12-14T23:30:00");
 
@@ -625,8 +625,50 @@
         day: d.getDate(),
         enableUtc: false
     });
-</script>
+</script> 
+-->
+<script>
+    // Set target date and time for IST (December 14, 2024, 10:30 AM IST)
+    var d = new Date("2024-12-14T10:30:00+05:30");
 
+    // Default example for `.simply-countdown-one`
+    simplyCountdown('.simply-countdown-one', {
+        year: d.getFullYear(),
+        month: d.getMonth() + 1, // Month is 0-indexed, so add 1
+        day: d.getDate(),
+        hours: d.getHours(),
+        minutes: d.getMinutes(),
+        seconds: 0, // Default to 0 seconds
+        words: { // Customize labels
+            days: 'Day',
+            hours: 'Hour',
+            minutes: 'Minute',
+            seconds: 'Second',
+            pluralLetter: 's'
+        },
+        plural: true, // Enable pluralization
+        enableUtc: false, // Use local time for IST
+        onEnd: function() { 
+            // Callback when countdown ends
+            document.querySelector('.simply-countdown-one').innerHTML = "The event has started!";
+        },
+    });
+
+    // jQuery example for `#simply-countdown-losange`
+    $('#simply-countdown-losange').simplyCountdown({
+        year: d.getFullYear(),
+        month: d.getMonth() + 1,
+        day: d.getDate(),
+        hours: d.getHours(),
+        minutes: d.getMinutes(),
+        seconds: 0,
+        enableUtc: false, // Use local time for IST
+        onEnd: function() {
+            // Callback for jQuery element
+            $('#simply-countdown-losange').html("The event has started!");
+        },
+    });
+</script>
 	</body>
 </html>
 
